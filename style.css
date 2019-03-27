@@ -16,6 +16,7 @@ i.google,   span.google{ 	color: #dd4b39; }
 i.linkin,   span.linkin{ 	color: #007bb6; }
 i.vk,       span.vk{     	color: #45668e; }
 i.pinterest,span.pinterest{ color: #cb2027; }
+i.ok,span.ok{ color: #ee8208; }
 i.surfingbird{ max-height: 12px; min-width: 25%; }
 i.surfingbird::before{
     content: url(https://bootstrap-ru.com/cdn/i/surf.png);
