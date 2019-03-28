@@ -1,7 +1,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>og test</title>
@@ -31,23 +32,66 @@
 <div class="container">
     <div class="btn-group">
         <button class="btn btn-default btn-lg disabled">Share:</button>
-        <a class="btn btn-default btn-lg" target="_blank" title="Like On Facebook" href="http://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fbaomastr.github.io/og/index.html">
+        <a id="fbLike" class="btn btn-default btn-lg" target="_blank" title="Like On Facebook">
             <i class="fa fa-thumbs-o-up fa-lg fb"></i>
         </a>
-        <a class="btn btn-default btn-lg" target="_blank" title="On Facebook" href="http://www.facebook.com/sharer.php?u=https%3A%2F%2Fbaomastr.github.io/og/index.html&t=shareText">
+        <a id="fb" class="btn btn-default btn-lg" target="_blank" title="On Facebook">
             <i class="fa fa-facebook fa-lg fb"></i>
         </a>
-        <a class="btn btn-default btn-lg" target="_blank" title="On Twitter" href="http://twitter.com/share?url=https%3A%2F%2Fbaomastr.github.io/og/index.html&text=shareText">
+        <a id="tw" class="btn btn-default btn-lg" target="_blank" title="On Twitter">
             <i class="fa fa-twitter fa-lg tw"></i>
         </a>
-        <a class="btn btn-default btn-lg" target="_blank" title="On VK.com" href="http://vk.com/share.php?url=https%3A%2F%2Fbaomastr.github.io/og/index.html&title=shareTitle&description=shareText&image=http%3A%2F%2Fshare.ivanzolotov.s3.amazonaws.com/2016/habr_og_big.png">
+        <a id="vk" class="btn btn-default btn-lg" target="_blank" title="On VK.com">
             <i class="fa fa-vk fa-lg vk"></i>
         </a>
-        <a class="btn btn-default btn-lg" target="_blank" title="On VK.com" href="https://connect.ok.ru/offer?url=https%3A%2F%2Fbaomastr.github.io/og/index.html&title=shareTitle&description=shareText&imageUrl=http%3A%2F%2Fshare.ivanzolotov.s3.amazonaws.com/2016/habr_og_big.png">
+        <a id="ok" class="btn btn-default btn-lg" target="_blank" title="On VK.com">
             <i class="fa fa-odnoklassniki ok"></i>
         </a>
     </div>
 </div>
+
+<script>
+  /*elements*/
+  var fbLike = document.getElementById('fbLike');
+  var fb = document.getElementById('fb');
+  var tw = document.getElementById('tw');
+  var vk = document.getElementById('vk');
+  var ok = document.getElementById('ok');
+
+  /*share data*/
+  var title = 'shareTitle';
+  var description = 'shareDescription';
+  var shareImage = 'http%3A%2F%2Fshare.ivanzolotov.s3.amazonaws.com/2016/habr_og_big.png';
+  var shareUrl = 'https%3A%2F%2Fbaomastr.github.io/og/index.html';
+
+  /*api links*/
+  var fbLikeApi = 'http://www.facebook.com/plugins/like.php';
+  var fbApi = 'http://www.facebook.com/sharer.php';
+  var twApi = 'http://twitter.com/share';
+  var vkApi = 'http://vk.com/share.php';
+  var okApi = 'https://connect.ok.ru/offer';
+
+  /*hrefs*/
+  var fbLikeHref = `${fbLikeApi}?href=${shareUrl}`;
+  var fbShareHref = `${fbApi}?u=${shareUrl}`;
+  var twShareHref = `${twApi}?url=${shareUrl}&text=${description}`;
+  var vkShareHref = `${vkApi}?url=${shareUrl}&title=${title}&description=${description}&image=${shareImage}`;
+  var okShareHref = `${okApi}?url=${shareUrl}&title=${title}&description=${description}&image=${shareImage}`;
+
+  function setAttr(element, href) {
+    element.setAttribute('href', href)
+  }
+
+  function setAllAttributes() {
+    setAttr(fbLike, fbLikeHref);
+    setAttr(fb, fbShareHref);
+    setAttr(tw, twShareHref);
+    setAttr(vk, vkShareHref);
+    setAttr(ok, okShareHref);
+  }
+
+  document.addEventListener("DOMContentLoaded", setAllAttributes);
+</script>
 
 </body>
 </html>
