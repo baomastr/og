@@ -41,11 +41,14 @@
         <a id="tw" class="btn btn-default btn-lg" target="_blank" title="On Twitter">
             <i class="fa fa-twitter fa-lg tw"></i>
         </a>
-        <a id="vk" class="btn btn-default btn-lg" target="_blank" title="On VK.com">
+        <a id="vk" class="btn btn-default btn-lg" target="_blank" title="On vk.com">
             <i class="fa fa-vk fa-lg vk"></i>
         </a>
-        <a id="ok" class="btn btn-default btn-lg" target="_blank" title="On VK.com">
+        <a id="ok" class="btn btn-default btn-lg" target="_blank" title="On ok.ru">
             <i class="fa fa-odnoklassniki ok"></i>
+        </a>
+        <a id="tg" class="btn btn-default btn-lg" target="_blank" title="On telegram">
+            <i class="fa fa-telegram tg"></i>
         </a>
     </div>
 </div>
@@ -57,6 +60,7 @@
   var tw = document.getElementById('tw');
   var vk = document.getElementById('vk');
   var ok = document.getElementById('ok');
+  var tg = document.getElementById('tg');
 
   /*share data*/
   var title = 'shareTitle';
@@ -70,6 +74,7 @@
   var twApi = 'http://twitter.com/share';
   var vkApi = 'http://vk.com/share.php';
   var okApi = 'https://connect.ok.ru/offer';
+  var tgApi = 'https://t.me/share/url';
 
   /*hrefs*/
   var fbLikeHref = `${fbLikeApi}?href=${shareUrl}`;
@@ -77,6 +82,7 @@
   var twShareHref = `${twApi}?url=${shareUrl}&text=${description}`;
   var vkShareHref = `${vkApi}?url=${shareUrl}&title=${title}&description=${description}&image=${shareImage}`;
   var okShareHref = `${okApi}?url=${shareUrl}&title=${title}&description=${description}&image=${shareImage}`;
+  var tgShareHref = `${tgApi}?url=${shareUrl}&text=${title}`;
 
   function setAttr(element, href) {
     element.setAttribute('href', href)
@@ -88,6 +94,7 @@
     setAttr(tw, twShareHref);
     setAttr(vk, vkShareHref);
     setAttr(ok, okShareHref);
+    setAttr(tg, tgShareHref);
   }
 
   document.addEventListener("DOMContentLoaded", setAllAttributes);
